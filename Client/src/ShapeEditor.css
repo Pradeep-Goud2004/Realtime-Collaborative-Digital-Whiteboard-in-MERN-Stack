@@ -1,0 +1,208 @@
+.shape-editor-container {
+  position: fixed;
+  bottom: 20px;
+  right: 320px;
+  width: 300px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh;
+  overflow: hidden;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(76, 175, 80, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.8);
+  }
+}
+
+.shape-editor-container.minimized {
+  width: 250px;
+  height: auto;
+}
+
+.shape-editor-container.minimized .shape-editor-content {
+  display: none;
+}
+
+.shape-editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px 12px 0 0;
+  flex-shrink: 0;
+}
+
+.shape-editor-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.shape-editor-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.shape-editor-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.shape-editor-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.shape-editor-content {
+  padding: 16px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.shape-section {
+  margin-bottom: 16px;
+}
+
+.shape-section label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.shape-buttons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.shape-btn {
+  aspect-ratio: 1;
+  padding: 10px;
+  border: 2px solid #e0e0e0;
+  background: white;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shape-btn:hover {
+  border-color: #667eea;
+  background: #f5f5f5;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+}
+
+.shape-btn.active {
+  border-color: #667eea;
+  background: #e8e8ff;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.shape-btn.drawing-mode {
+  border-color: #4CAF50;
+  background: #e8ffe8;
+  box-shadow: 0 0 12px rgba(76, 175, 80, 0.5);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.fill-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #333;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.fill-checkbox-label input[type="checkbox"] {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
+.fill-color-input {
+  width: 100%;
+  height: 40px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.fill-color-input:hover {
+  border-color: #667eea;
+}
+
+.shape-info {
+  background: #f5f7ff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 10px;
+  margin-top: 12px;
+}
+
+.shape-info p {
+  margin: 0;
+  color: #666;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 1200px) {
+  .shape-editor-container {
+    right: 260px;
+    width: 280px;
+  }
+
+  .shape-buttons {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .shape-editor-container {
+    right: 10px;
+    bottom: 10px;
+    width: 260px;
+  }
+
+  .shape-buttons {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
